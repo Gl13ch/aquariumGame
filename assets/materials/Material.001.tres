@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d2xsxodyowa44"]
+
+[ext_resource type="Texture2D" uid="uid://do7eqldljt2cb" path="res://assets/models/test_fish_fishy.png" id="1_nibr3"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_nibr3")
+roughness = 0.5

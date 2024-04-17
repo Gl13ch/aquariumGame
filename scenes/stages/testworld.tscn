@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://bq3vkc5v5t4vr"]
+[gd_scene load_steps=5 format=3 uid="uid://bq3vkc5v5t4vr"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctlwk5q81wpfu" path="res://assets/models/test_fish_model.res" id="1_i1gra"]
+[ext_resource type="Script" path="res://scripts/TestFish.gd" id="1_s1tkf"]
+[ext_resource type="PackedScene" uid="uid://d0jgegtl3ced0" path="res://scenes/fish/test_fish_v_2.tscn" id="3_52fn6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ntgd"]
+size = Vector3(12.6958, 3.22266, 1.09473)
 
 [node name="Testworld" type="Node3D"]
+
+[node name="TestFish" type="CharacterBody3D" parent="."]
+visible = false
+motion_mode = 1
+script = ExtResource("1_s1tkf")
+
+[node name="TestFishModel" type="MeshInstance3D" parent="TestFish"]
+mesh = ExtResource("1_i1gra")
+skeleton = NodePath("../Skeleton3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFish"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0829234, -0.179199, 0)
+shape = SubResource("BoxShape3D_3ntgd")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="TestFish"]
+
+[node name="Node3D" type="Node3D" parent="TestFish/Skeleton3D"]
+
+[node name="PhysicalBone3D" type="PhysicalBone3D" parent="TestFish/Skeleton3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.923304, 0.38407, 0, -0.38407, 0.923304, 0, 8.16782, 17.1328)
+current = true
+fov = 90.0
+
+[node name="test_fish_v2" parent="." instance=ExtResource("3_52fn6")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 103.401, 0)
